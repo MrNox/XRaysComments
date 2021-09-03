@@ -24,13 +24,14 @@ ITP = {
     536870912: 'ITP_SIGN',
 }
 
-PLUGIN_NAME = 'XRayComments'
+PLUGIN_NAME = "XRayComments"
+PLUGIN_VERSION = "0.1"
 
 class XRayComments(ida_kernwin.Choose):
     cmts_list = []
 
     def __init__(self):
-        super(XRayComments, self).__init__('XRayComments', [['Address', (8*2)+2], ['Preciser', 10], ['Comment', 100]])
+        super(XRayComments, self).__init__("XRayComments", [["Address", (8*2)+2], ["Preciser", 10], ["Comment", 100]])
         self.populate()
     
     def populate(self):
@@ -63,25 +64,25 @@ class XRayComments(ida_kernwin.Choose):
         ida_kernwin.jumpto(int(self.cmts_list[n][0], base=16))
 
 class XRayCommentsPlugin(ida_idaapi.plugin_t):
-    comment = 'Show all decompiler comments written by user'
-    version = 'v0.1'
+    comment = "Show all decompiler comments written by user"
+    version = PLUGIN_VERSION
     wanted_name = PLUGIN_NAME
-    wanted_hotkey = 'Ctrl+C'
+    wanted_hotkey = "Ctrl+C"
     flags = ida_idaapi.PLUGIN_FIX
-    help = 'Contact in twitter: @MrNox_'
+    help = "Contact in twitter: @MrNox_"
 
     def init(self):
         if ida_hexrays.init_hexrays_plugin():
-            ida_kernwin.msg('{}: Loaded!'.format(PLUGIN_NAME))
+            ida_kernwin.msg("{}: Loaded!".format(PLUGIN_NAME))
             
             return ida_idaapi.PLUGIN_KEEP
         else:
-            ida_kernwin.msg('{}: Decompiler not available, skipping.'.format(PLUGIN_NAME))
+            ida_kernwin.msg("{}: Decompiler not available, skipping.".format(PLUGIN_NAME))
             return ida_idaapi.PLUGIN_SKIP
 
     def run(self, _):
         plg = XRayComments()
-        plg.Show(PLUGIN_NAME)
+        plg.Show("{} {}".format(PLUGIN_NAME, PLUGIN_VERSION))
         pass
         
     def term(self):
@@ -89,3 +90,4 @@ class XRayCommentsPlugin(ida_idaapi.plugin_t):
         
 def PLUGIN_ENTRY():
     return XRayCommentsPlugin()
+
