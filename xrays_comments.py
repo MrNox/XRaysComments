@@ -67,14 +67,13 @@ class XRayCommentsPlugin(ida_idaapi.plugin_t):
     comment = "Show all decompiler comments written by user"
     version = PLUGIN_VERSION
     wanted_name = PLUGIN_NAME
-    wanted_hotkey = "Ctrl+C"
+    wanted_hotkey = "Shift+C"
     flags = ida_idaapi.PLUGIN_FIX
     help = "Contact in twitter: @MrNox_"
 
     def init(self):
         if ida_hexrays.init_hexrays_plugin():
             ida_kernwin.msg("{}: Loaded!".format(PLUGIN_NAME))
-            
             return ida_idaapi.PLUGIN_KEEP
         else:
             ida_kernwin.msg("{}: Decompiler not available, skipping.".format(PLUGIN_NAME))
