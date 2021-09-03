@@ -14,6 +14,6 @@ Go to `Edit -> Plugins -> XRaysComments` or press `Ctrl+C`
 
 ## FAQ
 
-Does this plugin need to decompile all functions?
+* Does this plugin need to decompile all functions?
 Yes. It could take several minutes only the first time it is run
 
