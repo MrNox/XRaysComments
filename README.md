@@ -7,7 +7,7 @@ A simple IDA Pro plugin to show all HexRays decompiler comments written by user
 Copy the file "xray_comments.py" to the `plugins` fonder under IDA Pro installation path.
 
 ## Usage
-Go to `Edit -> Plugins -> XRaysComments" or press `Ctrl+C`
+Go to `Edit -> Plugins -> XRaysComments` or press `Ctrl+C`
 
 ![xray animated gif](/rsrc/xrays_comments.gif?raw=true)
 
